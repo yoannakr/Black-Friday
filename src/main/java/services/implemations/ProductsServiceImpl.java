@@ -48,17 +48,17 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public void updateProduct(String name, int quantity, double price, double minPrice, User username) {
+    public void updateProduct(int id,String name, int quantity, double price, double minPrice, User username) {
         //TODO
         entityManager.getTransaction().begin();
         entityManager.createQuery("update Product e set e.name = :name, e.quantity = :quantity" +
-                ", e.price = :price, e.minPrice = :minPrice, e.username = :username where e.id = :id")
+                ", e.price = :price, e.minPrice = :minPrice, e.user = :username where e.id=:id")
                 .setParameter("name", name)
                 .setParameter("quantity", quantity)
                 .setParameter("price", price)
                 .setParameter("minPrice", minPrice)
                 .setParameter("username", username)
-                .setParameter("id", 1)
+                .setParameter("id", id)
                 .executeUpdate();
         entityManager.getTransaction().commit();
     }
@@ -71,4 +71,5 @@ public class ProductsServiceImpl implements ProductsService {
         User user = users.get(0);
         return user;
     }
+
 }

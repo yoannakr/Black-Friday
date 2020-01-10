@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="models.view.ProductViewModel" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
@@ -70,7 +71,7 @@
             </h4>
             <div class="button-holder d-flex justify-content-center">
                 <a class="btn btn-secondary"
-                   href="/products/update">Update Product</a>
+                   href="/products/update?id=<c:out value='<%= product.getId() %>' />">Update Product</a>
             </div>
         </div>
         <% } %>

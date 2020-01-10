@@ -99,19 +99,6 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col col-md-3">
-                <div class="form-group">
-                    <div class="label-holder d-flex justify-content-center">
-                        <label class="text-center text-white font-weight-bold" for="username">Username
-                            <select id="username" name="username" class="form-control">
-                                <option value="YoannaRz">YoannaRz</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col col-md-4"></div>
             <div class="col col-md-4">

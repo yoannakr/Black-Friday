@@ -1,5 +1,6 @@
 package web;
 
+import models.entity.Product;
 import models.entity.User;
 import models.view.ProductViewModel;
 import org.modelmapper.ModelMapper;
@@ -18,6 +19,7 @@ public class ProductsUpdateServlet extends HttpServlet {
 
     private final ProductsService productsService;
     private final ModelMapper mapper;
+    int id;
 
     @Inject
     public ProductsUpdateServlet(ProductsService productsService,
@@ -28,6 +30,10 @@ public class ProductsUpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getServletPath();
+        System.out.println(action);
+        id = Integer.parseInt(req.getParameter("id"));
+
         req.getRequestDispatcher("/products-update.jsp")
                 .forward(req,resp);
     }
@@ -39,12 +45,12 @@ public class ProductsUpdateServlet extends HttpServlet {
         int quantity = Integer.parseInt(req.getParameter("quantity"));
         double price = Double.parseDouble(req.getParameter("price"));
         double minPrice = Double.parseDouble(req.getParameter("minPrice"));
-        String username = req.getParameter("username");
-
+        String username = req.getSession().getAttribute("user").toString();
+        System.out.println(username);
         User user = productsService.getUser(username);
 
         try {
-            productsService.updateProduct(name,quantity,price,minPrice,user);
+            productsService.updateProduct(id,name,quantity,price,minPrice,user);
             resp.sendRedirect("/home");
         } catch (Exception e) {
             resp.sendRedirect("/users/register");
