@@ -53,13 +53,20 @@
         </div>
     </nav>
     <form class="mx-auto w-15" method="post" action="/products/update">
+        <%
+            String id = request.getParameter("id");
+            String name = request.getParameter("name");
+            String quantity = request.getParameter("quantity");
+            String price = request.getParameter("price");
+            String minPrice = request.getParameter("minPrice");
+        %>
         <div class="row">
             <div class="col col-md-3"></div>
             <div class="col col-md-3">
                 <div class="form-group">
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold" for="name">Name
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                            <input type="text" class="form-control" name="name" id="name"  value="<%= name %>">
                         </label>
                     </div>
                 </div>
@@ -69,7 +76,7 @@
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold" for="quantity">Quantity
                             <input type="number" min="1" class="form-control" name="quantity" id="quantity"
-                                   placeholder="Quantity">
+                                   value="<%= quantity %>">
                         </label>
                     </div>
                 </div>
@@ -81,7 +88,7 @@
                 <div class="form-group">
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold" for="price">Price
-                            <input type="number" step="0.01" class="form-control" placeholder="Price" name="price"
+                            <input type="number" min="0.01" step="0.01" class="form-control" value="<%= price%>" name="price"
                                    id="price">
                         </label>
                     </div>
@@ -91,7 +98,7 @@
                 <div class="form-group">
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold" for="minPrice">Minimal Price
-                            <input type="number" step="0.01" class="form-control" placeholder="Minimal Price"
+                            <input type="number" min="0.01" step="0.01" class="form-control" value="<%=minPrice%>"
                                    name="minPrice"
                                    id="minPrice">
                         </label>

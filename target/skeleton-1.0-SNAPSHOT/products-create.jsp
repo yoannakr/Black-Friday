@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold" for="price">Price
-                            <input type="number" step="0.01" class="form-control" placeholder="Price" name="price"
+                            <input type="number" min="0.01" step="0.01" class="form-control" placeholder="Price" name="price"
                                    id="price">
                         </label>
                     </div>
@@ -91,7 +91,7 @@
                 <div class="form-group">
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold" for="minPrice">Minimal Price
-                            <input type="number" step="0.01" class="form-control" placeholder="Minimal Price"
+                            <input type="number" min="0.01" step="0.01" class="form-control" placeholder="Minimal Price"
                                    name="minPrice"
                                    id="minPrice">
                         </label>

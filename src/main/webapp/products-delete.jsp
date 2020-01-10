@@ -1,10 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="models.view.ProductViewModel" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 8.1.2020 г.
-  Time: 23:51
+  Date: 10.1.2020 г.
+  Time: 22:43
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,37 +46,36 @@
                 </li>
                 <li class="nav-item col-md-4">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout">
+                        <input type="submit" value="Logout" >
                     </form>
                 </li>
             </ul>
         </div>
     </nav>
-    <h2 class="text-center text-white mt-5">All Products</h2>
-    <hr style="width: 50%"/>
+        <%
+            String id = request.getParameter("id");
+            String name = request.getParameter("name");
+            String quantity = request.getParameter("quantity");
+            String price = request.getParameter("price");
+            String minPrice = request.getParameter("minPrice");
+        %>
     <div class='row mb-4 d-flex justify-content-around'>
-        <% for (ProductViewModel product : ((List<ProductViewModel>) request.getAttribute("viewModel"))) {%>
         <div class="col-md-4 d-flex flex-column bg-text mb-3">
-            <h2>Owner: <%= product.getUserUsername() %>
+            <h2>Name: <%= name %>
             </h2>
-            <h2>Name: <%= product.getName() %>
-            </h2>
-            <h4>Quantity: <%= product.getQuantity() %>
+            <h4>Quantity: <%= quantity %>
             </h4>
-            <h4>Price: <%= product.getPrice() %>
+            <h4>Price: <%= price %>
             </h4>
-            <h4>Minimal Price: <%= product.getMinPrice() %>
+            <h4>Minimal Price: <%= minPrice %>
             </h4>
-            <div class="button-holder d-flex justify-content-center">
-                <a class="btn btn-secondary"
-                   href="/products/update?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Update
-                    Product</a>
-                <a class="btn btn-secondary"
-                   href="/products/delete?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Delete Product</a>
-            </div>
+            <form action="/products/delete" method="post">
+                <input type="submit" value="Delete Product" >
+            </form>
         </div>
-        <% } %>
     </div>
+
 </div>
 </body>
 </html>
+

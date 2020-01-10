@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav-item col-md-4">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout" >
+                        <input type="submit" value="Logout">
                     </form>
                 </li>
             </ul>
@@ -71,12 +71,14 @@
             </h4>
             <div class="button-holder d-flex justify-content-center">
                 <a class="btn btn-secondary"
-                   href="/products/update?id=<c:out value='<%= product.getId() %>' />">Update Product</a>
+                   href="/products/update?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Update
+                    Product</a>
+                <a class="btn btn-secondary"
+                   href="/products/delete?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Delete Product</a>
             </div>
         </div>
         <% } %>
     </div>
-
 </div>
 </body>
 </html>

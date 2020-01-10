@@ -10,6 +10,7 @@ public interface ProductsService {
 
     void createProduct(String name, int quantity, double price, double minPrice, User username);
     void updateProduct(int id,String name, int quantity, double price, double minPrice, User username);
+    void deleteProduct(int id);
     User getUser(String username);
     //create
     //delete

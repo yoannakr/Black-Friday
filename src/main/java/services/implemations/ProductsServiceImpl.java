@@ -49,10 +49,8 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public void updateProduct(int id,String name, int quantity, double price, double minPrice, User username) {
-        //TODO
         entityManager.getTransaction().begin();
-        entityManager.createQuery("update Product e set e.name = :name, e.quantity = :quantity" +
-                ", e.price = :price, e.minPrice = :minPrice, e.user = :username where e.id=:id")
+        entityManager.createQuery("update Product e set e.name = :name, e.quantity = :quantity , e.price = :price, e.minPrice = :minPrice, e.user = :username where e.id=:id")
                 .setParameter("name", name)
                 .setParameter("quantity", quantity)
                 .setParameter("price", price)
@@ -64,8 +62,17 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
+    public void deleteProduct(int id) {
+        entityManager.getTransaction().begin();
+        entityManager.createQuery("delete from Product e where e.id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
+        entityManager.getTransaction().commit();
+    }
+
+    @Override
     public User getUser(String username) {
-        List<User> users = entityManager.createQuery("select u from User u where u.username = :username", User.class)
+        List<User> users = entityManager.createQuery("select e from User e where e.username = :username", User.class)
                 .setParameter("username", username)
                 .getResultList();
         User user = users.get(0);
