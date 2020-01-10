@@ -31,7 +31,6 @@ public class ProductsUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getServletPath();
-        System.out.println(action);
         id = Integer.parseInt(req.getParameter("id"));
 
         req.getRequestDispatcher("/products-update.jsp")
