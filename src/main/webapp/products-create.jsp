@@ -45,7 +45,9 @@
                     <a class="nav-link text-white active font-weight-bold" href="/products/all">All Products</a>
                 </li>
                 <li class="nav-item col-md-4">
-                    <a class="nav-link text-white active font-weight-bold" href="/index">Logout</a>
+                    <form action="/LogoutServlet" method="post">
+                        <input type="submit" value="Logout" >
+                    </form>
                 </li>
             </ul>
         </div>
@@ -97,19 +99,19 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col col-md-3">
-                <div class="form-group">
-                    <div class="label-holder d-flex justify-content-center">
-                        <label class="text-center text-white font-weight-bold" for="username">Username
-                            <select id="username" name="username" class="form-control">
-                                <option value="YoannaRz">YoannaRz</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%--        <div class="row justify-content-center">--%>
+<%--            <div class="col col-md-3">--%>
+<%--                <div class="form-group">--%>
+<%--                    <div class="label-holder d-flex justify-content-center">--%>
+<%--                        <label class="text-center text-white font-weight-bold" for="username">Username--%>
+<%--                            <select id="username" name="username" class="form-control">--%>
+<%--                                <option value="YoannaRz">YoannaRz</option>--%>
+<%--                            </select>--%>
+<%--                        </label>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="row">
             <div class="col col-md-4"></div>
             <div class="col col-md-4">

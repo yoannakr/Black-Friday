@@ -37,7 +37,7 @@ public class ProductCreateServlet extends HttpServlet {
         int quantity = Integer.parseInt(req.getParameter("quantity"));
         double price = Double.parseDouble(req.getParameter("price"));
         double minPrice = Double.parseDouble(req.getParameter("minPrice"));
-        String username = req.getParameter("username");
+        String username = req.getSession().getAttribute("user").toString();
 
         User user = productsService.getUser(username);
 

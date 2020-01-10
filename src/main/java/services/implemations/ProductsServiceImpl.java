@@ -28,7 +28,7 @@ public class ProductsServiceImpl implements ProductsService {
         return entityManager.createQuery("select c from Product c", Product.class)
                 .getResultList()
                 .stream()
-                .map(car -> mapper.map(car, ProductServiceModel.class))
+                .map(product -> mapper.map(product, ProductServiceModel.class))
                 .collect(Collectors.toList());
     }
 

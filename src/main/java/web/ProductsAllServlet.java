@@ -30,7 +30,7 @@ public class ProductsAllServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ProductViewModel> products = productsService.getAll()
                 .stream()
-                .map(car -> mapper.map(car, ProductViewModel.class))
+                .map(product -> mapper.map(product, ProductViewModel.class))
                 .collect(Collectors.toList());
 
         req.setAttribute("viewModel",products);

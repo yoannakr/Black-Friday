@@ -61,6 +61,6 @@ public class UsersServiceImpl implements UsersService {
             return null;
         }
 
-        return mapper.map(users,UserServiceModel.class);
+        return mapper.map(user,UserServiceModel.class);
     }
 }

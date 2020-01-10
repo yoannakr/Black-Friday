@@ -46,7 +46,9 @@
                     <a class="nav-link text-white active font-weight-bold" href="/products/all">All Products</a>
                 </li>
                 <li class="nav-item col-md-4">
-                    <a class="nav-link text-white active font-weight-bold" href="/index">Logout</a>
+                    <form action="/LogoutServlet" method="post">
+                        <input type="submit" value="Logout" >
+                    </form>
                 </li>
             </ul>
         </div>
