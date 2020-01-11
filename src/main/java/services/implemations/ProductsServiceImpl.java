@@ -48,7 +48,8 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public void updateProduct(int id,String name, int quantity, double price, double minPrice, User username) {
+    public void updateProduct(int id, String name, int quantity, double price, double minPrice, User username) {
+        Product product = entityManager.find(Product.class,id);
         entityManager.getTransaction().begin();
         entityManager.createQuery("update Product e set e.name = :name, e.quantity = :quantity , e.price = :price, e.minPrice = :minPrice, e.user = :username where e.id=:id")
                 .setParameter("name", name)
@@ -58,6 +59,7 @@ public class ProductsServiceImpl implements ProductsService {
                 .setParameter("username", username)
                 .setParameter("id", id)
                 .executeUpdate();
+        entityManager.refresh(product);
         entityManager.getTransaction().commit();
     }
 
