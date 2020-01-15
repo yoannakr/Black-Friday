@@ -31,24 +31,20 @@
         <a class="nav-link text-white active h5" href="/home">Home</a>
         <div class="collapse navbar-collapse d-flex justify-content-end">
             <ul class="navbar-nav row">
-                <li class="nav-item col-md-2">
+                <li class="nav-item col-md-3">
                     <a class="nav-link text-white active font-weight-bold"
-                       href="/products/create">Upload Product</a>
+                       href="/products/create">Add Product</a>
                 </li>
-                <li class="nav-item col-md-2">
+                <li class="nav-item col-md-3">
                     <a class="nav-link text-white active font-weight-bold"
-                       href="/products/update">Update Product</a>
+                       href="/products/blackFriday">Black Friday</a>
                 </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-white active font-weight-bold"
-                       href="/products/delete">Delete Product</a>
-                </li>
-                <li class="nav-item col-md-2">
+                <li class="nav-item col-md-3">
                     <a class="nav-link text-white active font-weight-bold" href="/products/all">All Products</a>
                 </li>
-                <li class="nav-item col-md-4">
+                <li class="nav-item col-md-3">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout">
+                        <input type="submit" value="Logout" >
                     </form>
                 </li>
             </ul>
@@ -75,6 +71,9 @@
                     Product</a>
                 <a class="btn btn-secondary"
                    href="/products/delete?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Delete Product</a>
+                <a class="btn btn-secondary"
+                   href="/products/add/blackFriday?id=<c:out value='<%= product.getId() %>' />&discount=<c:out value='<%= product.getDiscount() %>' />">Add to Black Friday</a>
+
             </div>
         </div>
         <% } %>

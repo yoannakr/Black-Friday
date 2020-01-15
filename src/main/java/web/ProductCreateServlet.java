@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import services.ProductsService;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,17 +18,21 @@ public class ProductCreateServlet extends HttpServlet {
 
     private final ProductsService productsService;
     private final ModelMapper mapper;
+    private final EntityManager entityManager;
 
     @Inject
     public ProductCreateServlet(ProductsService productsService,
-                             ModelMapper mapper){
+                                ModelMapper mapper,
+                                EntityManager entityManager) {
         this.productsService = productsService;
         this.mapper = mapper;
+        this.entityManager = entityManager;
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/products-create.jsp")
-                .forward(req,resp);
+                .forward(req, resp);
     }
 
     @Override
@@ -39,11 +44,14 @@ public class ProductCreateServlet extends HttpServlet {
         double minPrice = Double.parseDouble(req.getParameter("minPrice"));
         String username = req.getSession().getAttribute("user").toString();
 
+
         User user = productsService.getUser(username);
 
         try {
-            productsService.createProduct(name,quantity,price,minPrice,user);
+
+            productsService.createProduct(name, quantity, price, minPrice, user);
             resp.sendRedirect("/home");
+
         } catch (Exception e) {
             resp.sendRedirect("/users/register");
         }

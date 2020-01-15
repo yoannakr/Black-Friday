@@ -31,7 +31,7 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
-    public void register(String username, String email, String password, String confirmPassword) throws Exception {
+    public void register(String username, String email, String password, String confirmPassword,String registrationType) throws Exception {
         if(!usersValidationService.canCreateUser(username,email,password,confirmPassword)){
             throw new Exception("User cannot be created");
         }
@@ -40,6 +40,7 @@ public class UsersServiceImpl implements UsersService {
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(hashingService.hash(password));
+        user.setRegistrationType(registrationType);
 
         entityManager.getTransaction().begin();
         entityManager.persist(user);

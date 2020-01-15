@@ -39,6 +39,7 @@
     </nav>
     <h2 class="text-center text-white mt-5">Register</h2>
     <form class="mx-auto w-15" method="post" action="/users/register">
+
         <br/>
         <div class="row">
             <div class="col col-md-3"></div>
@@ -78,6 +79,20 @@
                     <div class="label-holder d-flex justify-content-center">
                         <label class="text-center text-white font-weight-bold">Email
                             <input type="text" class="form-control" name="email" placeholder="Email">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col col-md-3">
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label class="text-center text-white font-weight-bold" for="type">Registration Type
+                            <select id="type" name="type" class="form-control">
+                                <option value="employee">Employee</option>
+                                <option value="customer">Customer</option>
+                            </select>
                         </label>
                     </div>
                 </div>

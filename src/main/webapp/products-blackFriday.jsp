@@ -1,8 +1,10 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="models.view.BlackFridayViewModel" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 10.1.2020 г.
-  Time: 22:43
+  Date: 15.1.2020 г.
+  Time: 20:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -42,36 +44,37 @@
                 </li>
                 <li class="nav-item col-md-3">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout" >
+                        <input type="submit" value="Logout">
                     </form>
                 </li>
             </ul>
         </div>
     </nav>
-        <%
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String quantity = request.getParameter("quantity");
-            String price = request.getParameter("price");
-            String minPrice = request.getParameter("minPrice");
-        %>
+    <h2 class="text-center text-white mt-5">Black Friday</h2>
+    <hr style="width: 50%"/>
     <div class='row mb-4 d-flex justify-content-around'>
+        <% for (BlackFridayViewModel product : ((List<BlackFridayViewModel>) request.getAttribute("blackFridayViewModel"))) {%>
+        <% if (product.getQuantity() > 0) { %>
         <div class="col-md-4 d-flex flex-column bg-text mb-3">
-            <h2>Name: <%= name %>
+            <h2>Owner: <%= product.getUserUsername() %>
             </h2>
-            <h4>Quantity: <%= quantity %>
+            <h2>Name: <%= product.getName() %>
+            </h2>
+            <h4>Quantity: <%= product.getQuantity() %>
             </h4>
-            <h4>Price: <%= price %>
+            <h4>Discount: <%= product.getDiscount() %>
             </h4>
-            <h4>Minimal Price: <%= minPrice %>
+            <h4>New Price: <%= product.getDiscountedPrice() %>
             </h4>
-            <form action="/products/delete" method="post">
-                <input type="submit" value="Delete Product" >
-            </form>
+            <div class="button-holder d-flex justify-content-center">
+                <a class="btn btn-secondary"
+                   href="/products/buy?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&price=<c:out value='<%= product.getDiscountedPrice() %>' />">
+                    Buy</a>
+            </div>
         </div>
+        <% } %>
+        <% } %>
     </div>
-
 </div>
 </body>
 </html>
-

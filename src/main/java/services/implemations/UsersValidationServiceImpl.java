@@ -18,6 +18,7 @@ public class UsersValidationServiceImpl implements UsersValidationService {
     public UsersValidationServiceImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
+
     @Override
     public boolean canCreateUser(String username, String email, String password, String confirmPassword) {
         return isEmailValid(email) &&

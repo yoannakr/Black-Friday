@@ -29,21 +29,6 @@
         <a class="nav-link text-white active h5" href="/home">Home</a>
         <div class="collapse navbar-collapse d-flex justify-content-end">
             <ul class="navbar-nav row">
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-white active font-weight-bold"
-                       href="/products/create">Upload Product</a>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-white active font-weight-bold"
-                       href="/products/update">Update Product</a>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-white active font-weight-bold"
-                       href="/products/delete">Delete Product</a>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-white active font-weight-bold" href="/products/all">All Products</a>
-                </li>
                 <li class="nav-item col-md-4">
                     <form action="/LogoutServlet" method="post">
                         <input type="submit" value="Logout" >
@@ -56,9 +41,9 @@
     <hr style="width: 50%"/>
     <br/>
     <div class="text-center">
-        <a class="btn btn-secondary text-center mr-3" href="/products/create">Upload Product</a>
-        <a class="btn btn-secondary text-center mr-3" href="/products/update">Update Product</a>
-        <a class="btn btn-secondary text-center mr-3" href="/products/delete">Delete Product</a>
+        <a class="btn btn-secondary text-center mr-3" href="/products/create">Add Product</a>
+        <a class="btn btn-secondary text-center mr-3" href="/products/create">Available Product</a>
+        <a class="btn btn-secondary text-center mr-3" href="/products/blackFriday">Black Friday</a>
         <a class="btn btn-secondary text-center mr-3" href="/products/all">All Products</a>
 
     </div>

@@ -6,6 +6,7 @@ public class ProductServiceModel {
     private int quantity;
     private double price;
     private double minPrice;
+    private double discount;
     private String userUsername;
 
     public int getId() {
@@ -46,6 +47,14 @@ public class ProductServiceModel {
 
     public void setMinPrice(double minPrice) {
         this.minPrice = minPrice;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
     public String getUserUsername() {

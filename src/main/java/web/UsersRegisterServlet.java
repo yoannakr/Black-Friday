@@ -33,14 +33,14 @@ public class UsersRegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
+        String registrationType = req.getParameter("type");
 
         try {
-            usersService.register(username, email, password, confirmPassword);
-            resp.sendRedirect("/home");
+            usersService.register(username, email, password, confirmPassword,registrationType);
+            resp.sendRedirect("/users/login");
         } catch (Exception e) {
             resp.sendRedirect("/users/register");
         }
-
     }
 }
 

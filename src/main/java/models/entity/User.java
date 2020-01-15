@@ -2,9 +2,8 @@ package models.entity;
 
 import models.entity.base.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,6 +11,7 @@ public class User extends BaseEntity {
     private String username;
     private String email;
     private String password;
+    private String registrationType;
     private Set<Product> products;
 
     @Column(nullable = false)
@@ -41,12 +41,22 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
+    @Column(nullable = false)
+    public String getRegistrationType() {
+        return registrationType;
+    }
+
+    public void setRegistrationType(String registrationType) {
+        this.registrationType = registrationType;
+    }
+
     @OneToMany(mappedBy = "user")
     public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> cars) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
+
 }

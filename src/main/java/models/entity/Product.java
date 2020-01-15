@@ -13,6 +13,7 @@ public class Product extends BaseEntity {
     private int quantity;
     private double price;
     private double minPrice;
+    private double discount;
     private User user;
 
     @Column(nullable = false)
@@ -49,6 +50,15 @@ public class Product extends BaseEntity {
 
     public void setMinPrice(double minPrice) {
         this.minPrice = minPrice;
+    }
+
+    @Column
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
     @ManyToOne

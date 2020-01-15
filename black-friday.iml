@@ -19,7 +19,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="blackFriday_db" />
+          <factory-entry name="blackFriday_db" value="efa8a80a-b34c-4149-b355-e706ec17fea4" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />

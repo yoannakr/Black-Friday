@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 10.1.2020 г.
-  Time: 22:43
+  Date: 15.1.2020 г.
+  Time: 22:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,25 +48,18 @@
             </ul>
         </div>
     </nav>
-        <%
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String quantity = request.getParameter("quantity");
-            String price = request.getParameter("price");
-            String minPrice = request.getParameter("minPrice");
-        %>
+    <%
+        String name = request.getParameter("name");
+        String price = request.getParameter("price");
+    %>
     <div class='row mb-4 d-flex justify-content-around'>
         <div class="col-md-4 d-flex flex-column bg-text mb-3">
             <h2>Name: <%= name %>
             </h2>
-            <h4>Quantity: <%= quantity %>
-            </h4>
             <h4>Price: <%= price %>
             </h4>
-            <h4>Minimal Price: <%= minPrice %>
-            </h4>
-            <form action="/products/delete" method="post">
-                <input type="submit" value="Delete Product" >
+            <form action="/products/buy" method="post">
+                <input type="submit" value="Buy Product" >
             </form>
         </div>
     </div>
@@ -74,4 +67,3 @@
 </div>
 </body>
 </html>
-

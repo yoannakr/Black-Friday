@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 10.1.2020 г.
-  Time: 22:43
+  Date: 15.1.2020 г.
+  Time: 20:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,30 +48,31 @@
             </ul>
         </div>
     </nav>
+    <form class="mx-auto w-15" method="post" action="/products/add/blackFriday">
         <%
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String quantity = request.getParameter("quantity");
-            String price = request.getParameter("price");
-            String minPrice = request.getParameter("minPrice");
+            String discount = request.getParameter("discount");
         %>
-    <div class='row mb-4 d-flex justify-content-around'>
-        <div class="col-md-4 d-flex flex-column bg-text mb-3">
-            <h2>Name: <%= name %>
-            </h2>
-            <h4>Quantity: <%= quantity %>
-            </h4>
-            <h4>Price: <%= price %>
-            </h4>
-            <h4>Minimal Price: <%= minPrice %>
-            </h4>
-            <form action="/products/delete" method="post">
-                <input type="submit" value="Delete Product" >
-            </form>
+        <div class="row">
+            <div class="col col-md-3"></div>
+            <div class="col col-md-3">
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label class="text-center text-white font-weight-bold" for="discount">Discount
+                            <input type="number"  min="1" max="100" class="form-control" name="discount" id="discount"  value="<%= discount %>">
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
+        <div class="row">
+            <div class="col col-md-4"></div>
+            <div class="col col-md-4">
+                <div class="button-holder d-flex justify-content-center">
+                    <input type="submit" class="btn btn-secondary" value="Add product to Black Friday"/>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
-
