@@ -103,7 +103,7 @@
             <div class="col col-md-4"></div>
             <div class="col col-md-4">
                 <div class="button-holder d-flex justify-content-center">
-                    <input type="submit" class="btn btn-secondary" value="Upload Product"/>
+                    <input type="submit" class="btn btn-secondary" value="Add Product"/>
                 </div>
             </div>
         </div>

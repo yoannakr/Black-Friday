@@ -29,11 +29,15 @@
         <a class="nav-link text-white active h5" href="/home">Home</a>
         <div class="collapse navbar-collapse d-flex justify-content-end">
             <ul class="navbar-nav row">
-                <li class="nav-item col-md-3">
+                <li class="nav-item col-md-2">
                     <a class="nav-link text-white active font-weight-bold"
                        href="/products/create">Add Product</a>
                 </li>
-                <li class="nav-item col-md-3">
+                <li class="nav-item col-md-2">
+                    <a class="nav-link text-white active font-weight-bold"
+                       href="/products/available">Available Product</a>
+                </li>
+                <li class="nav-item col-md-2">
                     <a class="nav-link text-white active font-weight-bold"
                        href="/products/blackFriday">Black Friday</a>
                 </li>
@@ -42,7 +46,7 @@
                 </li>
                 <li class="nav-item col-md-3">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout" >
+                        <input type="submit" value="Logout">
                     </form>
                 </li>
             </ul>

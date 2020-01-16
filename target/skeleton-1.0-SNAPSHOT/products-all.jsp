@@ -31,11 +31,18 @@
         <a class="nav-link text-white active h5" href="/home">Home</a>
         <div class="collapse navbar-collapse d-flex justify-content-end">
             <ul class="navbar-nav row">
-                <li class="nav-item col-md-3">
+                <li class="nav-item col-md-2">
+                    <% String registrationType = request.getSession().getAttribute("registrationType").toString(); %>
+                    <% if (registrationType.equals("employee")) {%>
                     <a class="nav-link text-white active font-weight-bold"
                        href="/products/create">Add Product</a>
+                    <% } %>
                 </li>
-                <li class="nav-item col-md-3">
+                <li class="nav-item col-md-2">
+                    <a class="nav-link text-white active font-weight-bold"
+                       href="/products/available">Available Product</a>
+                </li>
+                <li class="nav-item col-md-2">
                     <a class="nav-link text-white active font-weight-bold"
                        href="/products/blackFriday">Black Friday</a>
                 </li>
@@ -44,7 +51,7 @@
                 </li>
                 <li class="nav-item col-md-3">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout" >
+                        <input type="submit" value="Logout">
                     </form>
                 </li>
             </ul>
@@ -65,16 +72,31 @@
             </h4>
             <h4>Minimal Price: <%= product.getMinPrice() %>
             </h4>
+            <% if (registrationType.equals("employee")) {%>
             <div class="button-holder d-flex justify-content-center">
                 <a class="btn btn-secondary"
                    href="/products/update?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Update
                     Product</a>
                 <a class="btn btn-secondary"
-                   href="/products/delete?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Delete Product</a>
+                   href="/products/delete?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Delete
+                    Product</a>
+                <% if (product.getDiscount() > 0) { %>
                 <a class="btn btn-secondary"
-                   href="/products/add/blackFriday?id=<c:out value='<%= product.getId() %>' />&discount=<c:out value='<%= product.getDiscount() %>' />">Add to Black Friday</a>
-
+                   href="/products/add/blackFriday?id=<c:out value='<%= product.getId() %>' />&discount=<c:out value='<%= product.getDiscount() %>' />">
+                    Change discount</a>
+                <% } else {%>
+                <a class="btn btn-secondary"
+                   href="/products/add/blackFriday?id=<c:out value='<%= product.getId() %>' />&discount=<c:out value='<%= product.getDiscount() %>' />">Add
+                    to Black Friday</a>
+                <% } %>
             </div>
+            <% } else if (registrationType.equals("customer")) {%>
+            <div class="button-holder d-flex justify-content-center">
+                <a class="btn btn-secondary"
+                   href="/products/buy?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&price=<c:out value='<%= product.getPrice() %>' />">
+                    Buy</a>
+            </div>
+            <% } %>
         </div>
         <% } %>
     </div>
