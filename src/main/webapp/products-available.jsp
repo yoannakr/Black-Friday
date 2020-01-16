@@ -3,8 +3,8 @@
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 8.1.2020 г.
-  Time: 23:51
+  Date: 15.1.2020 г.
+  Time: 23:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -47,7 +47,10 @@
                        href="/products/blackFriday">Black Friday</a>
                 </li>
                 <li class="nav-item col-md-3">
-                    <a class="nav-link text-white active font-weight-bold" href="/products/all">All Products</a>
+                    <% if (registrationType.equals("employee")) {%>
+                    <a class="nav-link text-white active font-weight-bold"
+                       href="/products/all">All Products</a>
+                    <% } %>
                 </li>
                 <li class="nav-item col-md-3">
                     <form action="/LogoutServlet" method="post">
@@ -57,11 +60,16 @@
             </ul>
         </div>
     </nav>
-    <h2 class="text-center text-white mt-5">All Products</h2>
+    <h2 class="text-center text-white mt-5">Available Products</h2>
     <hr style="width: 50%"/>
     <div class='row mb-4 d-flex justify-content-around'>
         <% for (ProductViewModel product : ((List<ProductViewModel>) request.getAttribute("viewModel"))) {%>
+        <% if (product.getQuantity() > 0) { %>
         <div class="col-md-4 d-flex flex-column bg-text mb-3">
+            <% if(product.getDiscount() > 0){ %>
+            <h2>%Black Friday%
+            </h2>
+            <% } %>
             <h2>Owner: <%= product.getUserUsername() %>
             </h2>
             <h2>Name: <%= product.getName() %>
@@ -69,8 +77,6 @@
             <h4>Quantity: <%= product.getQuantity() %>
             </h4>
             <h4>Price: <%= product.getPrice() %>
-            </h4>
-            <h4>Minimal Price: <%= product.getMinPrice() %>
             </h4>
             <% if (registrationType.equals("employee")) {%>
             <div class="button-holder d-flex justify-content-center">
@@ -80,7 +86,7 @@
                 <a class="btn btn-secondary"
                    href="/products/delete?id=<c:out value='<%= product.getId() %>' />&name=<c:out value='<%= product.getName() %>' />&quantity=<c:out value='<%= product.getQuantity() %>' />&price=<c:out value='<%= product.getPrice() %>' />&minPrice=<c:out value='<%= product.getMinPrice() %>' />">Delete
                     Product</a>
-                <% if (product.getDiscount() > 0) { %>
+                <% if(product.getDiscount() > 0){ %>
                 <a class="btn btn-secondary"
                    href="/products/add/blackFriday?id=<c:out value='<%= product.getId() %>' />&discount=<c:out value='<%= product.getDiscount() %>' />">
                     Change discount</a>
@@ -98,6 +104,7 @@
             </div>
             <% } %>
         </div>
+        <% } %>
         <% } %>
     </div>
 </div>

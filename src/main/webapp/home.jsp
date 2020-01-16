@@ -31,7 +31,7 @@
             <ul class="navbar-nav row">
                 <li class="nav-item col-md-4">
                     <form action="/LogoutServlet" method="post">
-                        <input type="submit" value="Logout" >
+                        <input type="submit" value="Logout">
                     </form>
                 </li>
             </ul>
@@ -41,10 +41,15 @@
     <hr style="width: 50%"/>
     <br/>
     <div class="text-center">
+        <% String registrationType = request.getSession().getAttribute("registrationType").toString(); %>
+        <% if (registrationType.equals("employee")) {%>
         <a class="btn btn-secondary text-center mr-3" href="/products/create">Add Product</a>
-        <a class="btn btn-secondary text-center mr-3" href="/products/create">Available Product</a>
+        <% } %>
+        <a class="btn btn-secondary text-center mr-3" href="/products/available">Available Product</a>
         <a class="btn btn-secondary text-center mr-3" href="/products/blackFriday">Black Friday</a>
+        <% if (registrationType.equals("employee")) {%>
         <a class="btn btn-secondary text-center mr-3" href="/products/all">All Products</a>
+        <% } %>
 
     </div>
 </div>

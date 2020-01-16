@@ -58,15 +58,6 @@ public class BlackFridayViewModel {
         this.discount = discount;
     }
 
-    public double getDiscountedPrice() {
-        double discountedPrice = getPrice() * (1 - (getDiscount() * 0.01));
-        if(getMinPrice() > discountedPrice){
-            return getMinPrice();
-        }else{
-            return discountedPrice;
-        }
-    }
-
     public String getUserUsername() {
         return userUsername;
     }

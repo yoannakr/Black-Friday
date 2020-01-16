@@ -7,7 +7,6 @@ public class BlackFridayServiceModel {
     private double price;
     private double minPrice;
     private double discount;
-    private double discountedPrice;
     private String userUsername;
 
     public int getId() {
@@ -56,15 +55,6 @@ public class BlackFridayServiceModel {
 
     public void setDiscount(double discount) {
         this.discount = discount;
-    }
-
-    public double getDiscountedPrice() {
-        double discountedPrice = getPrice() * (1 - (getDiscount() * 0.01));
-        if(getMinPrice() > discountedPrice){
-            return getMinPrice();
-        }else{
-            return discountedPrice;
-        }
     }
 
     public String getUserUsername() {

@@ -24,6 +24,8 @@ public class AuthFilter implements Filter {
 
         Object username = request.getSession()
                 .getAttribute("user");
+//        Object registrationType = request.getSession()
+//                .getAttribute("registrationType");
         if(allowedPath || username != null){
             filterChain.doFilter(request, response);
         }else if(username == null) {

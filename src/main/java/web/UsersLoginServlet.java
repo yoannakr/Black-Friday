@@ -37,6 +37,7 @@ public class UsersLoginServlet extends HttpServlet {
         } else {
             req.getSession()
                     .setAttribute("user", user.getUsername());
+            req.getSession().setAttribute("registrationType",user.getRegistrationType());
             resp.sendRedirect("/home");
         }
     }

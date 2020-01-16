@@ -57,7 +57,7 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public void createProduct(String name, int quantity, double price, double minPrice,User user) {
+    public void createProduct(String name, int quantity, double price, double minPrice, User user) {
         Product product = new Product();
 
         product.setName(name);
@@ -97,6 +97,12 @@ public class ProductsServiceImpl implements ProductsService {
         entityManager.getTransaction().begin();
         Product product = entityManager.find(Product.class, id);
         product.setDiscount(discount);
+        double discountedPrice = product.getPrice() * (1 - (product.getDiscount() * 0.01));
+        if (product.getMinPrice() > discountedPrice) {
+            product.setPrice(product.getMinPrice());
+        } else {
+            product.setPrice(discountedPrice);
+        }
         entityManager.getTransaction().commit();
     }
 
